@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <!-- Weather Icon -->
         <div class="text-center">
         <img 
-        src="https://openweathermap.org/img/w/${data.weather[0].icon}.png" 
+        src="assets/${data.weather[0].description}.png" 
         alt="${data.weather[0].description}" 
         class="weather-icon mb-3" 
         width="100"
@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         `;
       })
+
       .catch((error) => {
         console.error("Error:", error);
         alert("Failed to fetch weather data. Please try again.");
