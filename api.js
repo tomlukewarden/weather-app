@@ -1,28 +1,29 @@
 const api_key = "6e2dced305956e592a7222c3c987e4dc";
 const api_url = "https://api.openweathermap.org/data/2.5/weather";
+// Weather Images
 const weatherImages = {
-  'clear': 'clear.png',
-  'few clouds': 'few-clouds.png',
-  'scattered clouds': 'scattered-clouds.png',
-  'broken clouds': 'broken-clouds.png',
-  'overcast clouds': 'overcast-clouds.png',
-  'shower rain': 'shower-rain.png',
-  'rain': 'rain.png',
-  'thunderstorm': 'thunderstorm.png',
-  'snow': 'snow.png',
-  'mist': 'mist.png',
+  "clear": "clear.png",
+  "few clouds": "few-clouds.png",
+  "scattered clouds": "scattered-clouds.png",
+  "broken clouds": "broken-clouds.png",
+  "overcast clouds": "overcast-clouds.png",
+  "shower rain": "shower-rain.png",
+  "rain": "rain.png",
+  "thunderstorm": "thunderstorm.png",
+  "snow": "snow.png",
+  "mist": "mist.png",
 };
-
+// Get Weather Data - API
 const getWeatherData = (city, country) => {
   const url = `${api_url}?q=${city},${country}&appid=${api_key}&units=metric`;
   return fetch(url);
 };
-
+// Get Weather Data - DOM
 document.addEventListener("DOMContentLoaded", () => {
   const cityInput = document.getElementById("city");
   const countryInput = document.getElementById("country");
   const form = document.getElementById("weather-form");
-
+// Get Weather Data - Form
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const city = cityInput.value;
@@ -37,20 +38,22 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then((data) => {
         console.log(data);
-
+// Populating Weather Card
         const weatherContainer = document.getElementById("weather-info");
-        
+
         weatherContainer.innerHTML = `
   <div class="card my-4 shadow-sm rounded-3 border-0">
     <div class="card-body text-center">
       
       <!-- Weather Header -->
-      <h5 class="card-title mb-3 text-uppercase fw-bold">${data.name}, ${data.sys.country}</h5>
+      <h5 class="card-title mb-3 text-uppercase fw-bold">${data.name}, ${data.sys.country
+          }</h5>
       
       <!-- Weather Icon -->
       <div class="mb-3">
         <img 
-          src="assets/${weatherImages[data.weather[0].description] || 'default.png'}" 
+          src="assets/${weatherImages[data.weather[0].description] || "default.png"
+          }" 
           alt="${data.weather[0].description}" 
           class="weather-icon mb-3"
           width="150" 
@@ -65,18 +68,21 @@ document.addEventListener("DOMContentLoaded", () => {
       <!-- Extra Weather Details -->
       <div class="row text-start">
         <div class="col-6">
-          <p class="card-text mb-1"><strong>Wind:</strong> ${data.wind.speed} m/s</p>
-          <p class="card-text mb-1"><strong>Humidity:</strong> ${data.main.humidity}%</p>
+          <p class="card-text mb-1"><strong>Wind:</strong> ${data.wind.speed
+          } m/s</p>
+          <p class="card-text mb-1"><strong>Humidity:</strong> ${data.main.humidity
+          }%</p>
         </div>
         <div class="col-6">
-          <p class="card-text mb-1"><strong>Pressure:</strong> ${data.main.pressure} hPa</p>
-          <p class="card-text mb-1"><strong>Cloudiness:</strong> ${data.clouds.all}%</p>
+          <p class="card-text mb-1"><strong>Pressure:</strong> ${data.main.pressure
+          } hPa</p>
+          <p class="card-text mb-1"><strong>Cloudiness:</strong> ${data.clouds.all
+          }%</p>
         </div>
       </div>
     </div>
   </div>
 `;
-
       })
 
       .catch((error) => {
