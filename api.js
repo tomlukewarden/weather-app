@@ -41,38 +41,42 @@ document.addEventListener("DOMContentLoaded", () => {
         const weatherContainer = document.getElementById("weather-info");
         
         weatherContainer.innerHTML = `
-        <div class="card my-4 text-center shadow-sm">
-        <div class="card-body">
-        <h5 class="card-title mb-3">Weather in ${data.name}, ${data.sys.country}</h5>
-    
-        <!-- Weather Icon -->
-        <div class="text-center">
+  <div class="card my-4 shadow-sm rounded-3 border-0">
+    <div class="card-body text-center">
+      
+      <!-- Weather Header -->
+      <h5 class="card-title mb-3 text-uppercase fw-bold">${data.name}, ${data.sys.country}</h5>
+      
+      <!-- Weather Icon -->
+      <div class="mb-3">
         <img 
-        src="assets/${weatherImages[data.weather[0].description]}" 
-        alt="${data.weather[0].description}" 
-        class="weather-icon mb-3" 
-        width="100"
-        height="100"
+          src="assets/${weatherImages[data.weather[0].description] || 'default.png'}" 
+          alt="${data.weather[0].description}" 
+          class="weather-icon mb-3"
+          width="150" 
+          height="150"
         />
+      </div>
+      
+      <!-- Weather Info -->
+      <h2 class="display-4 mb-2">${data.main.temp}°C</h2>
+      <h5 class="mb-3 text-muted">${data.weather[0].description}</h5>
+      
+      <!-- Extra Weather Details -->
+      <div class="row text-start">
+        <div class="col-6">
+          <p class="card-text mb-1"><strong>Wind:</strong> ${data.wind.speed} m/s</p>
+          <p class="card-text mb-1"><strong>Humidity:</strong> ${data.main.humidity}%</p>
         </div>
-
-        <!-- Weather Info -->
-        <h6 class="card-subtitle mb-2 text-muted">
-        <strong>Temperature:</strong> ${data.main.temp}°C
-        </h6>
-        <p class="card-text">
-        <strong>Weather:</strong> ${data.weather[0].description}
-    </p>
-    <p class="card-text">
-      <strong>Wind Speed:</strong> ${data.wind.speed} m/s
-    </p>
-    <p class="card-text">
-      <strong>Humidity:</strong> ${data.main.humidity}%
-    </p>
+        <div class="col-6">
+          <p class="card-text mb-1"><strong>Pressure:</strong> ${data.main.pressure} hPa</p>
+          <p class="card-text mb-1"><strong>Cloudiness:</strong> ${data.clouds.all}%</p>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+`;
 
-        `;
       })
 
       .catch((error) => {

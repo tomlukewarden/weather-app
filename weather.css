@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to right, rgba(26, 53, 161, 0.861), rgba(0, 128, 128, 0.861));
+    background: linear-gradient(to right, rgba(11, 31, 111, 0.998), rgba(9, 10, 42, 0.861));
     color: white;
 }
 
@@ -18,9 +18,37 @@ body {
 }
 
 .weather-icon {
-    border-radius: 10%;
-    background-color: #f7f7f7;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card {
+    background-color: #fff;
+    border-radius: 15px;
+  }
+  
+  .card-body {
+    padding: 25px;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .display-4 {
+    font-size: 4rem;
+    font-weight: 700;
+  }
+  
+  .row {
+    margin-top: 15px;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #333;
   }
   
