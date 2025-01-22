@@ -6,3 +6,14 @@ export const getWeatherData = (lat, lon) => {
     return fetch(url)
 }
 
+
+city = document.getElementById('city')
+country = document.getElementById('country')
+
+city.addEventListener('submit', (e) => {
+    e.preventDefault()
+    getWeatherData(city.value, country.value)
+        .then((response) => response.json())
+        .then(data => console.log(data))
+})
+
