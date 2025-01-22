@@ -1,19 +1,33 @@
-const api_key = '6e2dced305956e592a7222c3c987e4dc'
-const api_url = 'https://api.openweathermap.org/data/3.0/onecall?'
+const api_key = '6e2dced305956e592a7222c3c987e4dc';
+const api_url = 'https://api.openweathermap.org/data/2.5/weather';
 
-export const getWeatherData = (lat, lon) => {
-    const url = api_url + 'lat=' + lat + '&lon=' + lon + '&appid=' + api_key
-    return fetch(url)
-}
+const getWeatherData = (city, country) => {
+    const url = `${api_url}?q=${city},${country}&appid=${api_key}&units=metric`;
+    return fetch(url);
+};
 
+document.addEventListener('DOMContentLoaded', () => {
+    const cityInput = document.getElementById('city');
+    const countryInput = document.getElementById('country');
+    const form = document.getElementById('weather-form');
 
-city = document.getElementById('city')
-country = document.getElementById('country')
-
-city.addEventListener('submit', (e) => {
-    e.preventDefault()
-    getWeatherData(city.value, country.value)
-        .then((response) => response.json())
-        .then(data => console.log(data))
-})
-
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const city = cityInput.value;
+        const country = countryInput.value;
+        getWeatherData(city, country)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data); 
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to fetch weather data. Please try again.');
+            });
+    });
+});
