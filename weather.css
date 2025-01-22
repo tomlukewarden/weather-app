@@ -1,4 +1,17 @@
-body{
-    background-color: rgba(26, 53, 161, 0.861);
-    color: white
+body {
+    background: linear-gradient(to right, rgba(26, 53, 161, 0.861), rgba(0, 128, 128, 0.861));
+    color: white;
+}
+
+.card {
+    background-color: rgba(250, 251, 255, 0.975);
+    border-radius: 16px; 
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, 
+                rgba(0, 0, 0, 0.12) 0px -12px 30px, 
+                rgba(0, 0, 0, 0.12) 0px 4px 6px, 
+                rgba(0, 0, 0, 0.17) 0px 12px 13px, 
+                rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    padding: 20px; 
+    margin: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
