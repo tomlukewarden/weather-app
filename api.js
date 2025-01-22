@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(data);
 
         const weatherContainer = document.getElementById("weather-info");
+        
         weatherContainer.innerHTML = `
         <div class="card my-4 text-center shadow-sm">
         <div class="card-body">
@@ -47,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <!-- Weather Icon -->
         <div class="text-center">
         <img 
-        src="assets/${data.weather[0].description}.png" 
+        src="assets/${weatherImages[data.weather[0].description]}" 
         alt="${data.weather[0].description}" 
         class="weather-icon mb-3" 
         width="100"
