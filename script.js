@@ -1,5 +1,6 @@
 const api_key = "6e2dced305956e592a7222c3c987e4dc";
 const api_url = "https://api.openweathermap.org/data/2.5/weather";
+// const map_url = 'https://tile.openweathermap.org/map'
 // Weather Images
 const weatherImages = {
   "clear": "clear.png",
@@ -14,6 +15,15 @@ const weatherImages = {
   "mist": "mist.png",
 };
 // Get Weather Data - API
+
+/*
+const getMapData = (city, country) => {
+  const url = `${map_url}/precipitation/2m/{z}/{x}/{y}.png?appid=${api_key}`;
+  return fetch(url);
+}
+
+document.getElementById("map").appendChild(getMapData(city, country));
+*/
 const getWeatherData = (city, country) => {
   const url = `${api_url}?q=${city},${country}&appid=${api_key}&units=metric`;
   return fetch(url);
